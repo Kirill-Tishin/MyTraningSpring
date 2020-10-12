@@ -3,6 +3,7 @@ package com.example.TestSpring.validators;
 import com.example.TestSpring.entity.Employee;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.Errors;
@@ -11,9 +12,10 @@ import org.springframework.validation.Validator;
 @Service
 @Slf4j
 public class EmployeeValidator implements Validator {
+
     @Override
     public boolean supports(Class<?> aClass) {
-        return EmployeeValidator.class.equals(aClass);
+        return Employee.class.equals(aClass);
     }
 
     @Override

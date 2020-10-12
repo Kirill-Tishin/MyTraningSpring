@@ -2,16 +2,19 @@ package com.example.TestSpring.validators;
 
 import com.example.TestSpring.entity.Customer;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-@Slf4j
 @Service
+@Slf4j
 public class CustomerValidator implements Validator {
+
     @Override
     public boolean supports(Class<?> aClass) {
-        return CustomerValidator.class.equals(aClass);
+        return Customer.class.equals(aClass);
     }
 
     @Override
@@ -21,6 +24,7 @@ public class CustomerValidator implements Validator {
         log.debug("Start validate customer");
 
         if (customer.getIdCustomer() == 1) {
+            log.info("Id is can't be 1");
             log.error("Id is can't be 1");
         }
         if (!customer.getTitle().equals("Name2")) {
